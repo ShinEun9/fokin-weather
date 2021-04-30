@@ -61,7 +61,7 @@ const weatherOptions = {
     subtitle: "Rain a little bit",
   },
 };
-export default function Weather({ temp, condition }) {
+export default function Weather({ temp, condition, cityName }) {
   return (
     <LinearGradient
       // Button Linear Gradient
@@ -70,6 +70,7 @@ export default function Weather({ temp, condition }) {
     >
       <StatusBar barStyle="light-content" />
       <View style={styles.halfContainer}>
+        <Text style={styles.cityName}>{cityName}</Text>
         <MaterialCommunityIcons
           name={weatherOptions[condition].iconName}
           size={96}
@@ -124,6 +125,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  cityName: {
+    color: "white",
+    fontSize: 25,
+    marginBottom: 20,
+    fontWeight: "600",
   },
   title: {
     color: "white",
