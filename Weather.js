@@ -8,42 +8,57 @@ const weatherOptions = {
   Thunderstorm: {
     iconName: "weather-lightning",
     gradient: ["#373B44", "#4286f4"],
+    title: "Thunderstorm in the house",
+    subtitle: "Actually, outside of the house",
   },
   Drizzle: {
     iconName: "weather-hail",
     gradient: ["#89F7FE", "#66A6FF"],
+    title: "Drizzle",
+    subtitle: "Is like rain, but not rain",
   },
   Rain: {
     iconName: "weather-rainy",
     gradient: ["#00C6FB", "#005BEA"],
+    title: "Raining cats and dogs",
+    subtitle: "For more info look outside",
   },
   Snow: {
     iconName: "weather-snowy",
     gradient: ["#7DE2FC", "#B9B6E5"],
+    title: "Cold as balls",
+    subtitle: "Do you want to build a snowman?",
   },
-  Atmosphere: {
-    iconName: "weather-hail",
-    gradient: ["#89F7FE", "#66A6FF"],
-  },
+
   Clear: {
     iconName: "weather-sunny",
     gradient: ["#FF7300", "#FEF253"],
+    title: "Sunny",
+    subtitle: "Awesome Hot Day",
   },
   Clouds: {
     iconName: "weather-cloudy",
     gradient: ["#D7D2CC", "#304352"],
+    title: "Clouds",
+    subtitle: "I hate Cloudy day",
   },
   Mist: {
     iconName: "weather-hail",
     gradient: ["#4DA0B0", "#D39D38"],
+    title: "Mist!",
+    subtitle: "It's like you have no glasses on.",
   },
   Dust: {
     iconName: "weather-fog",
     gradient: ["#4DA0B0", "#D39D38"],
+    title: "Dust",
+    subtitle: "Just don't go outside.",
   },
   Haze: {
     iconName: "weather-fog",
     gradient: ["#4DA0B0", "#D39D38"],
+    title: "Haze",
+    subtitle: "Rain a little bit",
   },
 };
 export default function Weather({ temp, condition }) {
@@ -62,7 +77,12 @@ export default function Weather({ temp, condition }) {
         />
         <Text style={styles.temp}>{temp}°C</Text>
       </View>
-      <View style={styles.halfContainer} />
+      <View style={{ ...styles.halfContainer, ...styles.textContainer }}>
+        <Text style={styles.title}>{weatherOptions[condition].title}</Text>
+        <Text style={styles.subTitle}>
+          {weatherOptions[condition].subtitle}
+        </Text>
+      </View>
     </LinearGradient>
   );
 }
@@ -104,5 +124,20 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  title: {
+    color: "white",
+    fontSize: 44,
+    fontWeight: "300",
+    marginBottom: 10,
+  },
+  subTitle: {
+    fontWeight: "600",
+    color: "white",
+    fontSize: 24,
+  },
+  textContainer: {
+    paddingHorizontal: 20,
+    alignItems: "flex-start",
   },
 });
